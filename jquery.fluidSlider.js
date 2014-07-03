@@ -22,10 +22,15 @@
 	function FluidSlider(element, options) {
 		this.element = element;
 		this.$el = $(element);
-		this.options = $.extend({}, defaults, options);
-		this._defaults = defaults;
-		this._name = 'fluidSlider';
-		this.init();
+        this._defaults = defaults;
+        this._name = 'fluidSlider';
+
+        this.options = $.extend({}, defaults, {
+            'delay': this.$el.data('delay'),
+            'autoPlay': this.$el.data('autoPlay')
+        }, options);
+
+        this.init();
 	}
 
     FluidSlider.prototype = {
