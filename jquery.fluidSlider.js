@@ -53,6 +53,7 @@
             // init slider nav links
             this.initNav();
 
+            this.play = false;
             if(this.options.autoPlay)
                 this.start();
 
@@ -216,6 +217,6 @@
                 result = data[option].apply(data, Array.prototype.slice.call(args, 1));
             }
         });
-        return typeof result === 'undefined' ? this : result;
+        return (typeof result != 'undefined' ? result : this);
     };
 })(jQuery, window, document);
