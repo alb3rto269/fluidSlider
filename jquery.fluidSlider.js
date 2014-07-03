@@ -13,23 +13,22 @@
 ;(function($, window, document, undefined) {
 	'use strict';
 
-	var pluginName = 'slider',
-		defaults = {
-            delay: 8000,
-            autoPlay: false,
-            nav:  ''
-        };
+    var defaults = {
+        delay: 8000,            // time between slides
+        autoPlay: false,        // start the on initialization
+        nav:  ''                // selector or object with nav link
+    };
 
-	function Slider(element, options) {
+	function FluidSlider(element, options) {
 		this.element = element;
 		this.$el = $(element);
 		this.options = $.extend({}, defaults, options);
 		this._defaults = defaults;
-		this._name = pluginName;
+		this._name = 'fluidSlider';
 		this.init();
 	}
 
-    Slider.prototype = {
+    FluidSlider.prototype = {
 		init: function() {
             this.$list = this.$el.find('ul');
             this.$items = this.$list.children();
@@ -90,7 +89,7 @@
         destroy: function(){
             // Remove elements, remove data, unregister listerners, etc
             this._clearSchedule();
-            this.$el.off('.Slider');
+            this.$el.off('.fluidSlider');
             this.$el.removeData();
         },
 
@@ -132,7 +131,7 @@
                 complete: callback,
                 done: function(){
                     self._updateNav(index);
-                    self.$el.trigger('updated.Slider', { value: index});
+                    self.$el.trigger('updated.fluidSlider', { value: index});
                 }
             });
         },
@@ -160,7 +159,7 @@
                 return;
 
             $.each(this.$navItems, function(i, item){
-                $(item).data('Slider.Nav-index', i);
+                $(item).data('fluidSlider.Nav-index', i);
             });
 
             this.$navItems.on('click', $.proxy(this._clickNav, this));
@@ -172,7 +171,7 @@
             this._clearSchedule();
 
             // navigate to the desired index
-            var index = $(e.currentTarget).data('Slider.Nav-index');
+            var index = $(e.currentTarget).data('fluidSlider.Nav-index');
             this.index(index);
         },
         _updateNav: function(index){
@@ -186,17 +185,17 @@
 	};
 
 
-	$.fn[pluginName] = function(option) {
+	$.fn.fluidSlider = function(option) {
 		var args = arguments,
 			result;
 
 		this.each(function() {
 			var $this = $(this),
-				data = $.data(this, 'plugin_' + pluginName),
+				data = $.data(this, 'plugin_fluidSlider'),
 				options = typeof option === 'object' && option;
 
             if (!data) {
-				$this.data('plugin_' + pluginName, (data = new Slider(this, options)));
+				$this.data('plugin_fluidSlider', (data = new FluidSlider(this, options)));
 			}
 
 			if (typeof option === 'string' && options.length && options[0] != '_') {
