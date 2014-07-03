@@ -43,6 +43,7 @@
                 return;
 
             // set elements dimentions according the list size
+            this.$el.addClass('fluidSlider');
             this.$list.css({
                 'visibilily': 'visible', // ? why
                 'width': 100 * this.size + '%'
@@ -62,7 +63,7 @@
                 this.current = 0;
 
             this.play = true;
-            this._slide();
+            this._schedule();
         },
         stop: function(){
             // stop the slides "loop"
@@ -105,12 +106,16 @@
             // 2. preform the slide animation
             this._animate(this.current);
 
-            // 3. Get the exposure time of the current item and
-            //    schedule the next transition (only if required).
+            // 3. Schedule the next transition (only if required).
             if(this.play && this.current != this.size){
-                var delay = $(this.$items[this.current]).data('delay') || this.options.delay;
-                this._sliderProgram = setTimeout($.proxy(this.next, this), delay);
+                this._schedule();
             }
+        },
+        _schedule: function(){
+            // 3. Get the exposure time of the current item and
+            //    set the appropiate timeout
+            var delay = $(this.$items[this.current]).data('delay') || this.options.delay;
+            this._sliderProgram = setTimeout($.proxy(this.next, this), delay);
         },
         _clearSchedule: function(){
             // Clear scheduled transitions
@@ -210,5 +215,4 @@
 
         return typeof result === 'undefined' ? this : result;
     };
-
 })(jQuery, window, document);
