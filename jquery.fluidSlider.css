@@ -1,0 +1,26 @@
+/**
+ * Plugin Name: fluidSlider
+ * Plugin URI: https://github.com/alb3rto/fluidSlider
+ * Description: A simple slider based in fluid boxes and percentage widths.
+ * Version: 0.1
+ * Author: Alberto Sanchez
+ * Author https://twitter.com/alb3rto269
+ * License: The MIT License (MIT)
+ */
+
+.fluidSlider, [data-toggle="fluidSlider"]{
+    width: 100%;
+    overflow: hidden;
+    display: inline-block;
+}
+.fluidSlider > ul, [data-toggle="fluidSlider"] > ul{
+    width: 100%; /* 100% * $total_testimonials; */
+    height: 100%;
+    /*margin-left: 100%;*/
+}
+.fluidSlider > ul > li, [data-toggle="fluidSlider"] > ul > li{
+    width: 100%; /*100% / $total_testimonials;*/
+    display: inline-block;
+    float: left;
+    height: 100%;
+}
