@@ -11,17 +11,17 @@
 
 /* global jQuery: true */
 ;(function($, window, document, undefined) {
-	'use strict';
+    'use strict';
 
     var defaults = {
-        delay: 8000,            // time between slides
+        delay: 5000,            // time between slides in milliseconds
         autoPlay: false,        // start the on initialization
         nav:  ''                // selector or object with nav link
     };
 
-	function FluidSlider(element, options) {
-		this.element = element;
-		this.$el = $(element);
+    function FluidSlider(element, options) {
+        this.element = element;
+        this.$el = $(element);
         this._defaults = defaults;
         this._name = 'fluidSlider';
 
@@ -31,10 +31,10 @@
         }, options);
 
         this.init();
-	}
+    }
 
     FluidSlider.prototype = {
-		init: function() {
+        init: function() {
             this.$list = this.$el.find('ul');
             this.$items = this.$list.children();
             this.size = this.$items.length;
@@ -187,28 +187,28 @@
             }
         }
 
-	};
+    };
 
 
-	$.fn.fluidSlider = function(option) {
-		var args = arguments,
-			result;
+    $.fn.fluidSlider = function(option) {
+        var args = arguments,
+            result;
 
-		this.each(function() {
-			var $this = $(this),
-				data = $.data(this, 'plugin_fluidSlider'),
-				options = typeof option === 'object' && option;
+        this.each(function() {
+            var $this = $(this),
+                data = $.data(this, 'plugin_fluidSlider'),
+                options = typeof option === 'object' && option;
 
             if (!data) {
-				$this.data('plugin_fluidSlider', (data = new FluidSlider(this, options)));
-			}
+                $this.data('plugin_fluidSlider', (data = new FluidSlider(this, options)));
+            }
 
-			if (typeof option === 'string' && options.length && options[0] != '_') {
-				result = data[option].apply(data, Array.prototype.slice.call(args, 1));
-			}
-		});
+            if (typeof option === 'string' && options.length && options[0] != '_') {
+                result = data[option].apply(data, Array.prototype.slice.call(args, 1));
+            }
+        });
 
         return typeof result === 'undefined' ? this : result;
-	};
+    };
 
 })(jQuery, window, document);
