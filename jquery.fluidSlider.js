@@ -92,8 +92,8 @@
             var current = this.index();
             this.index(current + 1);
         },
-        play: function(){
-            // getter for play property
+        playing: function(){
+            // getter for ``play`` property
             return this.play;
         },
         destroy: function(){
@@ -212,11 +212,10 @@
                 $this.data('plugin_fluidSlider', (data = new FluidSlider(this, options)));
             }
 
-            if (typeof option === 'string' && options.length && options[0] != '_') {
+            if (typeof option === 'string' && option.length && option[0] != '_') {
                 result = data[option].apply(data, Array.prototype.slice.call(args, 1));
             }
         });
-
         return typeof result === 'undefined' ? this : result;
     };
 })(jQuery, window, document);

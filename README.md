@@ -76,7 +76,7 @@ You can modify the status of the plugin by calling functions as bellow:
     $('#mySlider').fluidSlider('stop');
 
     // Get the play status
-    var play = $('#mySlider').fluidSlider('play');
+    var play = $('#mySlider').fluidSlider('playing');
 
     // Get the current index
     var index = $('#mySlider').fluidSlider('index');
