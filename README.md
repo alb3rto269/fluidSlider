@@ -18,7 +18,9 @@ To use the fluidSlider plugin you just need o follow these simple steps:
       ...
     </head>
     ```
-2. Create the slider layout. Ensure to add the class `fluidSlider` or the data attribute `data-toggle="fluidSlider"` for better styling:
+
+2. Create the slider layout. Ensure to add the class `fluidSlider` or the data attribute `data-toggle="fluidSlider"` for better styling.
+
     ```
     <div id="mySlider" data-toggle="fluidSlider">
       <ul>
@@ -29,6 +31,7 @@ To use the fluidSlider plugin you just need o follow these simple steps:
       </ul>
     </div>
     ```
+
 3. Call the fluidSlider plugin.
     ```
     $('#mySlider').fluidSlider();
