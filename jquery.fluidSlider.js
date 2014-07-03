@@ -92,6 +92,10 @@
             var current = this.index();
             this.index(current + 1);
         },
+        play: function(){
+            // getter for play property
+            return this.play;
+        },
         destroy: function(){
             // Remove elements, remove data, unregister listerners, etc
             this._clearSchedule();
