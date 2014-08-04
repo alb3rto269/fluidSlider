@@ -46,7 +46,8 @@ You can customize the plugin behviour by passing an options plain object when ca
 {
   delay: 8000,      // (int) wait time between slides in milliseconds
   autoPlay: false,  // (boolean) start the slider on init
-  nav: ''           // jQuery Object, Selector or HTML representing the slider nav
+  nav: '',          // jQuery Object, Selector or HTML representing the slider nav
+  initial: 0        // initial slide
 }
 ```
 

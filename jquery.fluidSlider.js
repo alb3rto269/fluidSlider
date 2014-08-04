@@ -16,7 +16,8 @@
     var defaults = {
         delay: 5000,            // time between slides in milliseconds
         autoPlay: false,        // start the on initialization
-        nav:  ''                // selector or object with nav link
+        nav:  '',               // selector or object with nav link
+        initial: 0              // initial slide
     };
 
     function FluidSlider(element, options) {
@@ -27,7 +28,8 @@
 
         this.options = $.extend({}, defaults, {
             'delay': this.$el.data('delay'),
-            'autoPlay': this.$el.data('autoPlay')
+            'autoPlay': this.$el.data('autoPlay'),
+            'initial': this.$el.data('initial')
         }, options);
 
         this.init();
@@ -44,17 +46,21 @@
 
             // set elements dimentions according the list size
             this.$el.addClass('fluidSlider');
-            this.$list.css({
-                'visibilily': 'visible', // ? why
-                'width': 100 * this.size + '%'
-            });
+            this.$list.css('width', 100 * this.size + '%');
             this.$items.css('width', 100/this.size + '%');
 
             // init slider nav links
             this.initNav();
 
+            // set initial status
             this.play = false;
             this.current = 0;
+
+            // go to the initial slide
+            if(this.options.initial != this.current)
+                this.index(this.options.initial);
+
+            // set the play status
             if(this.options.autoPlay)
                 this.start();
 
