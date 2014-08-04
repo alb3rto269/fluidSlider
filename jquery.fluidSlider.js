@@ -54,6 +54,7 @@
             this.initNav();
 
             this.play = false;
+            this.current = 0;
             if(this.options.autoPlay)
                 this.start();
 
